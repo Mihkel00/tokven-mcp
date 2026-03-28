@@ -1,16 +1,26 @@
 {
-  "name": "your-package-name",
-  "version": "1.0.0",
-  "description": "A short description of your package.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo 'Error: no test specified' && exit 1"
+  "manifest_version": "0.3",
+  "name": "tokven-mcp",
+  "display_name": "Tokven — Design Token Generator",
+  "version": "1.0.7",
+  "description": "Generate complete design token systems from a hex color. OKLCH-derived, WCAG-validated. Runs locally, no account needed.",
+  "author": {
+    "name": "Mihkel Sylla",
+    "url": "https://github.com/Mihkel00"
   },
+  "homepage": "https://tokven.dev",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Mihkel00/tokven-mcp.git"
+    "url": "https://github.com/Mihkel00/tokven"
   },
-  "keywords": [],
-  "author": "Your Name",
-  "license": "ISC"
+  "license": "MIT",
+  "privacy_policies": ["https://tokven.dev/#/privacy"],
+  "server": {
+    "type": "node",
+    "entry_point": "bundle-entry.js",
+    "mcp_config": {
+      "command": "node",
+      "args": ["${__dirname}/bundle-entry.js"]
+    }
+  }
 }
