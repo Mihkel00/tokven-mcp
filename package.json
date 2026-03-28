@@ -1,33 +1,6 @@
 {
-  "name": "tokven-mcp",
-  "version": "1.0.7",
-  "description": "Generate complete design token systems from a hex color — OKLCH-derived, WCAG-validated, multi-format",
-  "mcpName": "io.github.Mihkel00/tokven-mcp",
-  "homepage": "https://tokven.dev",
-  "license": "MIT",
-  "type": "module",
-  "bin": { "tokven-mcp": "./bin.js" },
-  "engines": { "node": ">=18" },
-  "keywords": [
-    "mcp", "design-tokens", "design-system", "css-variables",
-    "tailwind", "shadcn", "oklch", "wcag", "color",
-    "typography", "ai", "ai-agent", "cursor", "claude",
-    "windsurf", "brand"
-  ],
-  "files": [
-    "bin.js",
-    "register.mjs",
-    "index.js",
-    "manifest.json",
-    "tools/",
-    "../src/utils/",
-    "../src/data/",
-    "../loader.mjs"
-  ],
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.12.0",
-    "zod": "^3.22.0",
-    "culori": "^4.0.2",
-    "unique-names-generator": "^4.7.1"
+    "some-package": "^1.0.0"
   }
 }
+
