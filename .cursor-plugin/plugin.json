@@ -1,0 +1,18 @@
+{
+  "name": "tokven-mcp",
+  "displayName": "Tokven — Design Token Generator",
+  "version": "1.0.7",
+  "description": "Generate WCAG-safe design token systems from a hex color. OKLCH-derived colors, typography, spacing, shadows — in CSS, Tailwind, or DTCG JSON.",
+  "author": {
+    "name": "Mihkel Sylla",
+    "email": "mihkel.sylla@gmail.com"
+  },
+  "homepage": "https://tokven.dev",
+  "repository": "https://github.com/Mihkel00/tokven-mcp",
+  "license": "MIT",
+  "logo": "https://tokven.dev/apple-touch-icon.png",
+  "category": "developer-tools",
+  "keywords": ["design-tokens", "css", "tailwind", "oklch", "wcag", "color", "mcp"],
+  "tags": ["design", "tokens", "accessibility", "color"],
+  "skills": "./skills/"
+}
