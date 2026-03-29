@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "tokven": {
+      "command": "npx",
+      "args": ["-y", "tokven-mcp"]
+    }
+  }
+}
