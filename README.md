@@ -28,6 +28,31 @@ Give it a brand color and a mood. It returns a full token system: colors (light 
 claude mcp add tokven -- npx -y tokven-mcp
 ```
 
+### Using as a project dependency
+
+If tokven-mcp is installed locally (e.g. in `node_modules`), agents can invoke it directly via stdio without `npx`:
+
+```json
+{
+  "mcpServers": {
+    "tokven": {
+      "command": "node",
+      "args": ["node_modules/tokven-mcp/bin.js"]
+    }
+  }
+}
+```
+
+## Recommended workflow
+
+For the best results — especially when an agent is applying tokens on behalf of a user — follow this three-step flow:
+
+1. **Preview first.** Call `get_token_preview` with the brand hex and mood. It returns key colors, fonts, contrast summary, and a **visual preview URL** on tokven.dev.
+2. **Share the preview URL.** Surface the `url` field to the user (e.g. `https://tokven.dev/?hex=2563eb&mood=corporate`) so they can see the palette visually before committing.
+3. **Generate tokens.** Once the user approves the palette, call `generate_tokens` with the same parameters for full CSS/Tailwind/DTCG output.
+
+This avoids the common pitfall of applying a palette the user has never visually confirmed.
+
 ## Tools
 
 ### generate_tokens
@@ -49,13 +74,13 @@ Generates a complete token system from a hex color.
 
 > Generate a design system for #2563eb with a corporate mood as Tailwind v4
 
-**Returns:** Full CSS/Tailwind/DTCG output, Google Fonts `@import` URL, WCAG contrast results for both light and dark mode.
+**Returns:** Full CSS/Tailwind/DTCG output, Google Fonts `@import` URL, WCAG contrast results for both light and dark mode, and a `url` linking to a visual preview on tokven.dev.
 
 ---
 
 ### get_token_preview
 
-Quick summary without full CSS. Useful for comparing moods before committing.
+Quick summary without full CSS. **Recommended first step** — call this before `generate_tokens` so the user can approve the palette visually.
 
 | Parameter | Required | Description |
 |-----------|----------|-------------|
@@ -66,7 +91,7 @@ Quick summary without full CSS. Useful for comparing moods before committing.
 
 > Preview tokens for #e05aad with a soft mood
 
-**Returns:** Primary colors, font pairing, radius, shadow style, contrast pass/fail count.
+**Returns:** Primary colors, font pairing, radius, shadow style, contrast pass/fail count, and a `url` linking to a visual preview on tokven.dev. Share this URL with the user for visual confirmation before generating full tokens.
 
 ---
 
@@ -107,6 +132,44 @@ Returns all 14 mood presets with descriptions. No parameters.
 | `neon` | Dark bg, max chroma, cyber |
 | `corporate` | Professional blue, trustworthy |
 | `retro` | Warm saturated, 70s/80s display |
+
+## Response structure
+
+### generate_tokens
+
+```json
+{
+  "css": "/* full token output — CSS custom properties, Tailwind, or DTCG */",
+  "fonts": {
+    "heading": "Raleway",
+    "body": "Noto Sans",
+    "importUrl": "https://fonts.googleapis.com/css2?family=Raleway:wght@600&family=Noto+Sans:wght@400&display=swap"
+  },
+  "contrast": { "light": "31/31 pass", "dark": "31/31 pass" },
+  "mood": "corporate",
+  "format": "css",
+  "url": "https://tokven.dev/?hex=2563eb&mood=corporate"
+}
+```
+
+### get_token_preview
+
+```json
+{
+  "mood": "corporate",
+  "colors": {
+    "primary": "#2563eb",
+    "background": "#f6f7fa",
+    "surface": "#f0f2f6",
+    "text": "#0e1016"
+  },
+  "fonts": { "heading": "Raleway", "body": "Noto Sans" },
+  "radius": "6px",
+  "shadow": "medium",
+  "contrast": { "light": "31/31 pass", "dark": "31/31 pass" },
+  "url": "https://tokven.dev/?hex=2563eb&mood=corporate"
+}
+```
 
 ## Example output
 
@@ -161,6 +224,7 @@ Plus WCAG contrast validation:
 **Expected behavior:**
 - Calls `get_token_preview`
 - Returns compact summary: primary colors, font pairing, radius, shadow style, contrast pass count
+- Includes a `url` to tokven.dev for visual preview — share with the user before committing to full generation
 - No full CSS — quick comparison view
 
 ### Example 3: Check if colors are accessible

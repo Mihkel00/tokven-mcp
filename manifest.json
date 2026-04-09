@@ -2,7 +2,7 @@
   "manifest_version": "0.3",
   "name": "tokven-mcp",
   "display_name": "Tokven — Design Token Generator",
-  "version": "1.0.7",
+  "version": "1.0.9",
   "description": "Generate complete design token systems from a hex color. OKLCH-derived, WCAG-validated. Runs locally, no account needed.",
   "author": {
     "name": "Mihkel Sylla",

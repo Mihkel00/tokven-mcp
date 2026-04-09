@@ -6,12 +6,12 @@
     "url": "https://github.com/Mihkel00/tokven",
     "source": "github"
   },
-  "version": "1.0.7",
+  "version": "1.0.10",
   "packages": [
     {
       "registryType": "npm",
       "identifier": "tokven-mcp",
-      "version": "1.0.7",
+      "version": "1.0.10",
       "transport": {
         "type": "stdio"
       }

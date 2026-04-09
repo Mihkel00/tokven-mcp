@@ -1,33 +1,49 @@
 {
   "name": "tokven-mcp",
-  "version": "1.0.7",
+  "version": "1.0.11",
   "description": "Generate complete design token systems from a hex color — OKLCH-derived, WCAG-validated, multi-format",
   "mcpName": "io.github.Mihkel00/tokven-mcp",
   "homepage": "https://tokven.dev",
   "license": "MIT",
   "type": "module",
-  "bin": { "tokven-mcp": "./bin.js" },
-  "engines": { "node": ">=18" },
+  "bin": {
+    "tokven-mcp": "./bin.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
   "keywords": [
-    "mcp", "design-tokens", "design-system", "css-variables",
-    "tailwind", "shadcn", "oklch", "wcag", "color",
-    "typography", "ai", "ai-agent", "cursor", "claude",
-    "windsurf", "brand"
+    "mcp",
+    "design-tokens",
+    "design-system",
+    "css-variables",
+    "tailwind",
+    "shadcn",
+    "oklch",
+    "wcag",
+    "color",
+    "typography",
+    "ai",
+    "ai-agent",
+    "cursor",
+    "claude",
+    "windsurf",
+    "brand"
   ],
+  "scripts": {
+    "build": "node build.mjs"
+  },
   "files": [
     "bin.js",
-    "register.mjs",
-    "index.js",
+    "dist/",
     "manifest.json",
-    "tools/",
-    "../src/utils/",
-    "../src/data/",
-    "../loader.mjs"
+    "README.md"
   ],
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.12.0",
-    "zod": "^3.22.0",
+    "apca-w3": "^0.1.9",
     "culori": "^4.0.2",
-    "unique-names-generator": "^4.7.1"
+    "unique-names-generator": "^4.7.1",
+    "zod": "^3.22.0"
   }
 }
